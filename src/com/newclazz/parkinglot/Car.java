@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 /**
  * 进库汽车等级对象
- * 
+ *
  * @author dyzhu
  */
 public class Car {
@@ -22,8 +22,8 @@ public class Car {
 
     /**
      * 快速构造方法
-     * 
-     * @param licensePlate 车牌号
+     *
+     * @param licensePlate    车牌号
      * @param checkInDateTime 进库时间
      */
     public Car(String licensePlate, Date checkInDateTime) {
@@ -32,7 +32,6 @@ public class Car {
     }
 
     public String getLicensePlate() {
-
         return licensePlate;
     }
 
@@ -45,7 +44,6 @@ public class Car {
     }
 
     public void setLicensePlate(String licensePlate) {
-
         this.licensePlate = licensePlate;
     }
 

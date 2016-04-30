@@ -10,8 +10,8 @@ import static com.newclazz.parkinglot.Tingchechang.All_chewei;
 
 public class tingche {
     public static String chepai;
-
     public static Date date1 = new Date();
+
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.print("请输入进库车牌号：");
