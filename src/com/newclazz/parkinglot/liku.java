@@ -22,7 +22,6 @@ public class liku {
         System.out.println(time);
         tcc.liku(chepai);
         tcc.writefile();
-//        tcc.sa
     }
 }
 

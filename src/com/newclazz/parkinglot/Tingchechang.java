@@ -1,18 +1,22 @@
 package com.newclazz.parkinglot;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
+import javax.xml.crypto.Data;
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Tingchechang implements ParkingLot {
-    /** 总车位 */
+    /**
+     * 总车位
+     */
     public static final int All_chewei = 10;
-    /** 停车场内剩余车位 */
+    /**
+     * 停车场内剩余车位
+     */
     int shengyu = 10;
-    /** 成员变量尽量只声明,在set方法或者构造方法里再进行赋值,可以有效的对异常进行捕获 */
+    /**
+     * 成员变量尽量只声明,在set方法或者构造方法里再进行赋值,可以有效的对异常进行捕获
+     */
     File f;
     Map<String, Date> yiting;
     static SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -121,6 +125,8 @@ public class Tingchechang implements ParkingLot {
                 long charge = (time - 2) * 5 + 5;
                 System.out.println("收费" + charge);
             }
+            /** 离库时将该车停留时间离开时间进行整理*/
+            statistics(chepai,date2);
             yiting.remove(chepai);
             return "10分钟";
         } else {
@@ -128,7 +134,22 @@ public class Tingchechang implements ParkingLot {
         }
     }
 
-    public static void main(String[] args) {
-        Tingchechang ting = new Tingchechang();
+    public void statistics(String chepai, Date date) {
+        File s = new File(System.getProperty("user.dir"), "statistics.txt");
+        s.getParentFile().mkdirs();
+        try {
+            if (!s.exists()) {
+                s.createNewFile();
+            }
+            try (FileWriter writer = new FileWriter(s)) {
+                String  nnn="车牌:"+chepai +" "+"进库时间："+yiting.get(chepai)+" "+"离库时间："+date.getTime() / (1000 * 60 * 60)+"\r\n";
+                writer.write(nnn.toString());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }
